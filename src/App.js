@@ -12,6 +12,8 @@ export function App() {
     duration: 10,
   });
 
+  const inputIsValid = userInput.duration >= 1;
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -25,7 +27,13 @@ export function App() {
     <>
       <Header />
       <UserInputs onChange={handleChange} userInput={userInput} />
-      <Results input={userInput} />
+      {inputIsValid ? (
+        <Results input={userInput} />
+      ) : (
+        <p style={{ textAlign: 'center' }}>
+          Plese enter a duration greater than zero
+        </p>
+      )}
     </>
   );
 }
