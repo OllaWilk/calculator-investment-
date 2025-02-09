@@ -1,24 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input } from '../Input/Input';
 import './UserInputs.scss';
 
-export const UserInputs = () => {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 1000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setUserInput((prevUserInput) => ({
-      ...prevUserInput,
-      [name]: Number(value),
-    }));
-  };
-
+export const UserInputs = ({ onChange, userInput }) => {
   return (
     <section id='user-input'>
       <div className='input-group'>
@@ -26,13 +10,13 @@ export const UserInputs = () => {
           label='Initial Investment'
           name={'initialInvestment'}
           value={userInput.initialInvestment}
-          onChange={handleChange}
+          onChange={onChange}
         />
         <Input
           label='Anual Investment'
           name={'annualInvestment'}
           value={userInput.annualInvestment}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </div>
       <div className='input-group'>
@@ -40,13 +24,13 @@ export const UserInputs = () => {
           label='Expected Return'
           name={'expectedReturn'}
           value={userInput.expectedReturn}
-          onChange={handleChange}
+          onChange={onChange}
         />
         <Input
           label='duration'
           name={'duration'}
           value={userInput.duration}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </div>
     </section>
